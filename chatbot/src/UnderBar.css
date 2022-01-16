@@ -1,48 +1,47 @@
-.underBar{
-    background-color: rgb(138, 138, 138);
-    height: 3rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center; 
+.underBar {
+  background-color: #3b5998;
+  height: 3rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
-.btnEnter{
-    margin-right: 1rem;
-    position: absolute;
-    right: 1rem;
-    padding: none;
+.underBar .chat {
+  color: white;
 }
 
-.chat{
-    font-size: 15px;
-    text-align: center;
-    position: absolute;
-    width: 70%;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%,50%);
-    padding: none;
-    margin: 0 auto;
-    border: 1px solid rgb(155, 155, 155);
-    border-radius: 25px;
+.btnEnter {
+  color: white;
+  margin-right: 1rem;
+  position: absolute;
+  right: 1rem;
 }
 
-.chatBox{
-    background-color: bisque;
-    color: black;
+/* 채팅 input*/
+.chat {
+  margin-left: 12;
+  border: none;
+  background: transparent;
+  font-size: 1em;
+  outline: none;
+  padding: 20px;
+  position: absolute;
+  width: 90%;
+  transform: translatey(50%);
+  bottom: 50%;
+}
 
-
-    width: fit-content;
-    height: 'fit-content';
-    padding: 10px;
-    border-radius: 20rem;
-    margin-left: 20px;
-
-    /* top: 10px;
-    font-size: 11pt;
-    position: relative;
-    text-align: right; */
+/* 말풍선 */
+.chatBox {
+  background-color: #d4d4d4;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 15rem;
+  margin: 10px;
+  float: right;
 }
