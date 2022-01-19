@@ -1,16 +1,12 @@
 import "./App.css";
-import Header from "./Header";
-import Chat from "./components/Chat";
-import Footer from "./Footer";
+import TopBar from "./TopBar";
+import UnderBar from "./UnderBar";
 
 function App() {
   return (
     <>
-      <Header />
-      <Chat />
-      <body>
-        <Footer />
-      </body>
+      <TopBar />
+        <UnderBar />
     </>
   );
 }
