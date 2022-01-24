@@ -1,40 +1,42 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import "./UnderBar.css";
-// import Swal from "sweetalert2";
 
 function UnderBar() {
-
   const [doChat, setDoChat] = useState("");
   const [doChats, setDoChats] = useState([]);
 
+  const date = new Date();
+  const time = {
+    hours: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds(),
+  };
+
+  const timeString = `${time.hours}:${time.minutes}:${time.seconds}`;
+
+  const [doBots, setDoBots] = useState([]);
+
   const onChange = (event) => setDoChat(event.target.value);
 
-  const BOT_MESSAGE1 = "안녕하세요, 반갑습니다.";
-  const BOT_MESSAGE2 = "제 이름은 정해지지 않았습니다."
-
-  const date = new Date();
-
   const onSubmit = (event) => {
-
     event.preventDefault();
-    
+
     if (doChat === "") {
       return;
-    } else if (doChat === "안녕") {
-      return (
-        window.scrollBy(0, window.innerHeight),
-        setDoChats((currentArray) => [...currentArray, doChat])
-        // setDoChats((currentArray) => [...currentArray, BOT_MESSAGE1])
-      );
-    } else if (doChat === "이름이 뭐야?") {
-      return (
-        setDoChats((currentArray) => [...currentArray, doChat])
-        // setDoChats((currentArray) => [...currentArray, BOT_MESSAGE2])
-      );
     }
+
     setDoChats((currentArray) => [...currentArray, doChat]);
     setDoChat("");
+
+    if (doChat === "안녕") {
+      setDoBots((currentArray) => [...currentArray, "안녕하세요, 반갑습니다."]);
+    } else if (doChat === "이름이 뭐야?") {
+      setDoBots((currentArray) => [
+        ...currentArray,
+        "제 이름은 아직 정해지지 않았습니다.",
+      ]);
+    }
   };
 
   window.scrollBy(0, window.innerHeight);
@@ -43,14 +45,20 @@ function UnderBar() {
     <>
       <div id="chatBoxWrap">
         {doChats.map((item, index) => (
-          <>
-          <div className="chatBox" key={index}>
+          <div className="chatUser" key={index}>
+            <span className="showTime">{timeString}</span>
             {item}
           </div>
-          <div className="chatBot">{BOT_MESSAGE1}</div>
-          </>
+        ))}
+
+        {doBots.map((item, index) => (
+          <div className="chatBot" key={index}>
+            {item}
+            <span className="showTime">{timeString}</span>
+          </div>
         ))}
       </div>
+
       {/* 언더바 레이아웃 및 이벤트 등록 */}
       <div className="underBar">
         <form onSubmit={onSubmit}>
