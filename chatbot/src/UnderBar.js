@@ -1,7 +1,6 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import "./UnderBar.css";
-// import Swal from "sweetalert2";
 
 function UnderBar() {
 
@@ -10,10 +9,7 @@ function UnderBar() {
 
   const onChange = (event) => setDoChat(event.target.value);
 
-  const BOT_MESSAGE1 = "안녕하세요, 반갑습니다.";
-  const BOT_MESSAGE2 = "제 이름은 정해지지 않았습니다."
-
-  const date = new Date();
+  let botMessage = "안녕";
 
   const onSubmit = (event) => {
 
@@ -21,20 +17,16 @@ function UnderBar() {
     
     if (doChat === "") {
       return;
-    } else if (doChat === "안녕") {
-      return (
-        window.scrollBy(0, window.innerHeight),
-        setDoChats((currentArray) => [...currentArray, doChat])
-        // setDoChats((currentArray) => [...currentArray, BOT_MESSAGE1])
-      );
-    } else if (doChat === "이름이 뭐야?") {
-      return (
-        setDoChats((currentArray) => [...currentArray, doChat])
-        // setDoChats((currentArray) => [...currentArray, BOT_MESSAGE2])
-      );
-    }
+    } 
+
     setDoChats((currentArray) => [...currentArray, doChat]);
     setDoChat("");
+
+    if (doChat === "안녕") {
+      botMessage = "안녕하세요, 반갑습니다."
+    } else if (doChat === "이름이 뭐야?") {
+      botMessage = "제 이름은 정해지지 않았습니다."
+    }
   };
 
   window.scrollBy(0, window.innerHeight);
@@ -44,10 +36,10 @@ function UnderBar() {
       <div id="chatBoxWrap">
         {doChats.map((item, index) => (
           <>
-          <div className="chatBox" key={index}>
+          <div className="chatUser" key={index}>
             {item}
           </div>
-          <div className="chatBot">{BOT_MESSAGE1}</div>
+          <div className="chatBot">{botMessage}</div>
           </>
         ))}
       </div>
