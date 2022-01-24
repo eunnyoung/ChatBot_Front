@@ -10,7 +10,9 @@ function UnderBar() {
 
   const onChange = (event) => setDoChat(event.target.value);
 
-  const LEFT_MESSAGES = "왼쪽으로 출력할게요";
+  const BOT_MESSAGE1 = "안녕하세요, 반갑습니다.";
+  const BOT_MESSAGE2 = "제 이름은 정해지지 않았습니다."
+
 
   const onSubmit = (event) => {
 
@@ -18,16 +20,19 @@ function UnderBar() {
     
     if (doChat === "") {
       return;
-    } else if (doChat === "왼쪽") {
+    } else if (doChat === "안녕") {
       return (
         setDoChats((currentArray) => [...currentArray, doChat]),
-        setDoChats((currentArray) => [...currentArray, LEFT_MESSAGES])
+        setDoChats((currentArray) => [...currentArray, BOT_MESSAGE1])
+      );
+    } else if (doChat === "이름이 뭐야?") {
+      return (
+        setDoChats((currentArray) => [...currentArray, doChat]),
+        setDoChats((currentArray) => [...currentArray, BOT_MESSAGE2]) 
       );
     }
-
     setDoChats((currentArray) => [...currentArray, doChat]);
     setDoChat("");
-
   };
 
   window.scrollBy(0, window.innerHeight);
