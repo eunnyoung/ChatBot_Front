@@ -7,9 +7,10 @@ function UnderBar() {
   const [doChat, setDoChat] = useState("");
   const [doChats, setDoChats] = useState([]);
 
+  const [doBot, setDoBot] = useState("");
+  const [doBots, setDoBots] = useState([]);
+ 
   const onChange = (event) => setDoChat(event.target.value);
-
-  let botMessage = "안녕";
 
   const onSubmit = (event) => {
 
@@ -23,9 +24,9 @@ function UnderBar() {
     setDoChat("");
 
     if (doChat === "안녕") {
-      botMessage = "안녕하세요, 반갑습니다."
+      setDoBots((currentArray) => [...currentArray, "안녕하세요, 반갑습니다."]);
     } else if (doChat === "이름이 뭐야?") {
-      botMessage = "제 이름은 정해지지 않았습니다."
+      setDoBots((currentArray) => [...currentArray, "제 이름은 아직 정해지지 않았습니다."]);
     }
   };
 
@@ -35,14 +36,17 @@ function UnderBar() {
     <>
       <div id="chatBoxWrap">
         {doChats.map((item, index) => (
-          <>
           <div className="chatUser" key={index}>
             {item}
           </div>
-          <div className="chatBot">{botMessage}</div>
-          </>
+        ))}
+        {doBots.map((item, index) => (
+          <div className="chatBot" key={index}>
+            {item}
+          </div>
         ))}
       </div>
+
       {/* 언더바 레이아웃 및 이벤트 등록 */}
       <div className="underBar">
         <form onSubmit={onSubmit}>
