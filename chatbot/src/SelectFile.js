@@ -1,25 +1,31 @@
+import { useState } from "react";
 import { FiFolderPlus } from "react-icons/fi";
-// import "./SelectFile.css";
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react/macro";
-import React from "react";
+import "./SelectFile.css";
 
 function SelectFile() {
+  const [myImage, setMyImage] = useState([]);
+  const addImage = (e) => {
+    const nowSelectImageList = e.target.files;
+    const nowImageURLList = [...myImage];
+    for (let i = 0; i < nowSelectImageList.length; i += 1) {
+      const nowImageUrl = URL.createObjectURL(nowSelectImageList[i]);
+      nowImageURLList.push(nowImageUrl);
+    }
+    setMyImage(nowImageURLList);
+  };
+
   return (
-    <>
-      <div className="btnFolder" class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile" />
-      </div>
-      <FiFolderPlus
-        className="btnFolder"
-        size="2rem"
-        // css={css({
-        //   color: "black",
-        //   justifyContent: "flex-end",
-        // })}
-      />
-    </>
+    <div>
+      <label htmlFor="input-file" className="fileUpload" onChange={addImage}>
+        <FiFolderPlus className="btnFolder" size="2rem" />
+        <input
+          type="file"
+          multiple="multiple"
+          id="input-file"
+          style={{ display: "none" }}
+        />
+      </label>
+    </div>
   );
 }
 
