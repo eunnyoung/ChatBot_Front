@@ -56,5 +56,15 @@
   margin-top: 64px;
 }
 
+.chatBot {
+  background-color: #d4d4d4;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 15rem;
+  margin: 10px;
+  position: relative;
+}
 .chatBoxWrap{
 }
