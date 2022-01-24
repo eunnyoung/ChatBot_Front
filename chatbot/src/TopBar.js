@@ -7,15 +7,16 @@ const TopBar = () => {
     Swal.fire({
       icon: "warning",
       html: "정말로 대화를 종료하시겠습니까?",
-      // 취소 버튼
       showCancelButton: true,
-      // 네 버튼
       showCloseButton: true,
       focusConfirm: false,
       cancelButtonText: "cancel",
       confirmButtonText: "ok",
+    }).then((result) => {
+      if (result.value) {
+        window.close();
+      }
     });
-
   return (
     <>
       <div className="topBar">

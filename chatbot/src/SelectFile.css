@@ -1,0 +1,7 @@
+.btnFolder {
+  color: white;
+  position: fixed;
+  top: 0.7rem;
+  right: 0.5rem;
+  z-index: 2;
+}
