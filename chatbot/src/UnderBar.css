@@ -81,3 +81,8 @@
   margin-top: 100px;
   margin-bottom: 200px; */
 }
+
+.onDeleteClick {
+  background-color: transparent;
+  border: none;
+}
