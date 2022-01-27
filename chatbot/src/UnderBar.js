@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
+import { FiX } from "react-icons/fi";
 import "./UnderBar.css";
 
 function UnderBar() {
   const [message, setMessage] = useState("");
-
-  const [users, setUsers] = useState([
-    {
-      sender: "",
-      message: "",
-      date: null,
-    },
-  ]);
+  const [users, setUsers] = useState([]);
+  const nextId = useRef(0);
 
   // 시간
   function getDatetime() {
@@ -19,14 +14,17 @@ function UnderBar() {
     let time = {
       hours: date.getHours(),
       minutes: date.getMinutes(),
-      seconds: date.getSeconds(),
     };
-    return `${time.hours}:${time.minutes}:${time.seconds}`;
+    return `${time.hours}:${time.minutes}`;
   }
 
   const onChange = (event) => {
     console.log(",,,,", message);
     setMessage(event.target.value);
+  };
+
+  const onRemove = (id) => {
+    setUsers(users.filter((message) => message.id !== id));
   };
 
   const onSubmit = (event) => {
@@ -36,14 +34,35 @@ function UnderBar() {
       return;
     }
 
+    nextId.current += 1;
     const time = getDatetime();
     setUsers(
       users.concat({
+        id: nextId.current,
         sender: "user",
         message: message,
         date: time,
       })
     );
+
+    // const style = {
+    //   justifyContents: "flex-start",
+    // };
+
+    if (message === "안녕") {
+      // style = { style };
+      nextId.current += 1;
+      const time = getDatetime();
+      setUsers((value) => [
+        ...value,
+        {
+          id: nextId.current,
+          sender: "bot",
+          message: "안녕하세요, 만나서 반갑습니다.",
+          date: time,
+        },
+      ]);
+    }
 
     setMessage("");
   };
@@ -54,11 +73,22 @@ function UnderBar() {
     <>
       <div id="chatBoxWrap">
         {users.map((item, index) => (
-          <div className="chatUser" key={index}>
-            <button className="onDeleteClick">X</button>
-            {console.log("messs", item)}
+          <div className="chatUser">
+            <FiX
+              size="11px"
+              className="onDeleteClick"
+              onClick={() => onRemove(item.id)}
+            ></FiX>
+            {/* <span className="index">{item.id}</span> */}
             <span className="showTime">{item.date}</span>
-            {item.message}
+            <span
+              className="chatMessage"
+              style={
+                item.sender === "bot" ? { float: "left" } : { float: "right" }
+              }
+            >
+              {item.message}
+            </span>
           </div>
         ))}
       </div>
