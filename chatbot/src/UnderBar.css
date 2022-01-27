@@ -56,19 +56,10 @@
   margin-top: 64px;
 }
 
-.chatBot {
-  background-color: #d4d4d4;
-  color: black;
-  width: fit-content;
-  height: fit-content;
-  padding: 10px;
-  border-radius: 15rem;
-  margin: 10px;
-  position: relative;
-}
-
-.chatBot:last-child {
-  margin-bottom: 56px;
-}
-.chatBoxWrap{
+.showTime {
+  color: gray;
+  font-size: small;
+  /* margin-left: 60px;
+  margin-top: 100px;
+  margin-bottom: 200px; */
 }
