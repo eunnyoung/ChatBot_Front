@@ -38,12 +38,12 @@
 /* 말풍선 */
 .chatUser {
   width: fit-content;
+  height: fit-content+50px;
   padding: 10px;
   margin: 10px;
   position: relative;
-  right: -98%;
-  /* left: 20%; */
-  transform: translateX(-100%);
+  /* right:-98%; */
+  /* transform: translateX(-100%); */
 }
 
 .chatMessage {
@@ -64,7 +64,7 @@
 .showTime {
   color: gray;
   font-size: small;
-  margin-left: 60px;
+  margin-left: 10px;
   padding-right: 5px;
   /* margin-top: 100px; */
   /* margin-bottom: 200px; */
@@ -72,7 +72,12 @@
 
 .onDeleteClick {
   background-color: transparent;
-  margin: 2px;
   color: gray;
+  /* padding: 2px; */
   border: none;
+}
+
+.botIcon {
+  color: #3b5998;
+  margin-right: 10px;
 }
