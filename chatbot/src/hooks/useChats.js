@@ -46,5 +46,9 @@ export const useChats = () => {
     socket.emit('remove', id)
   };
 
-  return { chats, error, send, remove };
+  const sendImage = (sender, url) => {
+    setChats((value) => value.concat({sender, message: url, isImage: true}))
+  }
+
+  return { chats, error, send, remove, sendImage };
 };

@@ -1,0 +1,55 @@
+/* 채팅 input*/
+.chat {
+    margin-left: 12;
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    outline: none;
+    padding: 20px;
+    position: absolute;
+    width: 90%;
+    transform: translatey(50%);
+    bottom: 50%;
+  }
+  
+  /* 말풍선 */
+  .chatUser {
+    width: fit-content;
+    height: fit-content+50px;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+  }
+  
+  .chatMessage {
+    background-color: #d4d4d4;
+    color: black;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 15rem;
+  }
+  
+  .chatUser:last-child {
+    margin-bottom: 56px;
+  }
+  .chatUser:first-child {
+    margin-top: 64px;
+  }
+  
+  .showTime {
+    color: gray;
+    font-size: small;
+    margin-left: 10px;
+    padding-right: 5px;
+  }
+  
+  .onDeleteClick {
+    background-color: transparent;
+    color: gray;
+    border: none;
+  }
+  
+  .botIcon {
+    color: #3b5998;
+    margin-right: 10px;
+  }
