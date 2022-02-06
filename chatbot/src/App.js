@@ -3,7 +3,7 @@ import TopBar from "./TopBar";
 import ChatList from "./ChatList";
 import UnderBar from "./UnderBar";
 import SelectFile from "./SelectFile";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useChats } from "./hooks/useChats";
 import { useNickName } from "./hooks/useNickName";
 
@@ -11,10 +11,19 @@ function App() {
   const { chats, send, remove, sendImage } = useChats();
   const nickName = useNickName();
 
+  const ref = useRef();
+
   useEffect(() => {
-    window.scrollBy(0, window.innerHeight);
+
+    if(ref.current < chats.length){
+      window.scrollBy(0, window.innerHeight);
+    }
+    // window.scrollBy(0, window.innerHeight);
+    ref.current = chats.length;
+    
   }, [chats])
 
+  
   const onSelectFile = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
       return;
@@ -45,6 +54,10 @@ function App() {
   // 메시지 전송
   const onSubmit = (event) => {
     event.preventDefault();
+
+    if( message === ""){
+      return
+    }
 
     send(nickName, message);
     if (message === "안녕") {

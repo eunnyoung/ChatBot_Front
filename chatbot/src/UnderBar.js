@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import "./UnderBar.css";
-import './sculpture.jpg';
 
 const UnderBar = (props) => {
   return (

@@ -6,14 +6,15 @@ import "./ChatList.css";
 const ChatList = (props) => {
     const nickName = props.nickName;
 
-    return <div id="chatBoxWrap">
+    return <div className="chatBoxWrap">
         {props.chats.map((item, index) => (
             <div
-                className="chatUser"
+                className="chatArea"
                 style={
                     item.sender !== nickName
                         ? {}
                         : { right: "-98%", transform: "translateX(-100%)" }
+                        // : {}
                 }
             >
 
@@ -39,19 +40,26 @@ const ChatList = (props) => {
                     }
                 />
                 {/* 메시지 정렬 */}
-                <span
+                <div
                     className="chatMessage"
                     style={
+
                         item.sender !== nickName ? { float: "left" } : { float: "right" }
                     }
+                    onLoad={function() { window.scrollBy(0, window.innerHeight)}}
                 >
 
                     {item.isImage ? <img src={item.message} className="img" alt="파일첨부" /> : item.message}
-                </span>
-                <span>
-                    {/* <img src={props.src} className="img" alt="파일첨부" style={{ maxHeight: "20px" }} /> */}
-                </span>
-
+                </div>
+                {/* 사진 전용 메시지 창 */}
+                {/* <span
+                    className="img"
+                    style={
+                        item.isImage ? { float: "right"  } : { display: "none" }
+                    }
+                >
+                <img src={item.message} alt="파일첨부" />
+                </span> */}
                 {/* 시간 정렬 */}
                 <span
                     className="showTime"
